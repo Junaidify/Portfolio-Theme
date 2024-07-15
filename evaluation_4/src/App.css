@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.form{
+   position: absolute;
+   left: 20vw;
+   right : 40vw;
+   top: 10vh;
+   /* border: 2px solid black; */
+   border-radius: 10px;
+   padding: 5vh 3vw;
+   box-shadow: 2px 4px 10px 0px rgba(0,0,0,0.75);
+  }
+
+
+  .navbar_icons{
+    margin-right: 5px;
+    font-weight: normal;
+  }
