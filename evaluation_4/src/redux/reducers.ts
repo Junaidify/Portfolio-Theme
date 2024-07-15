@@ -1,7 +1,19 @@
 import { EDIT, FORM_SUBMIT } from "../constant/action";
 import { ActionType, InputFieldPropTypes } from "../constant/interfaces";
 
-const initialState: InputFieldPropTypes[] = JSON.parse(localStorage.getItem("formData") || "[{id : 0, name : 'Masai School', description : 'Education of new Age', location : 'Bangalore, India', bio : 'journey to change the aspirations into inspiration'}]");
+// Define a valid initial state as a fallback
+const defaultState: InputFieldPropTypes[] = [
+  {
+    id: 0,
+    name: 'Masai School',
+    description: 'Education of new Age',
+    location: 'Bangalore, India',
+    bio: 'Journey to change the aspirations into inspiration'
+  }
+];
+
+// Parse the initial state from localStorage or use the default state
+const initialState: InputFieldPropTypes[] = JSON.parse(localStorage.getItem("formData") || JSON.stringify(defaultState));
 
 export const reducer = (state: InputFieldPropTypes[] = initialState, action: ActionType): InputFieldPropTypes[] => {
   switch (action.type) {
