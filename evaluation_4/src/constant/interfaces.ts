@@ -1,4 +1,7 @@
 export interface InputFieldPropTypes {
+  slice: any;
+  length: number;
+  slice(page: number, arg1: number): unknown;
   id: number;
   name: string;
   description: string;

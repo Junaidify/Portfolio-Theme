@@ -17,6 +17,8 @@ export const Form = () => {
     description: "",
     location: "",
     bio: "",
+    length: 0,
+    slice: (page: number, arg1: number) => {},
   });
 
   const dispatch = useDispatch();
@@ -71,6 +73,8 @@ export const Form = () => {
       description: "",
       location: "",
       bio: "",
+      length: 0,
+      slice: (page: number, arg1: number) => {},
     });
   };
 
