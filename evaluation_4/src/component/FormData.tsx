@@ -2,26 +2,26 @@ import { InputFieldPropTypes } from "../constant/interfaces";
 import { useSelector } from "react-redux";
 import { Box, Button, Grid, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import {  useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 
 export const FormData = ({ handleEditData }: any) => {
-  const formData = useSelector((state: InputFieldPropTypes) => state);
+  const formData = useSelector((state: InputFieldPropTypes[]) => state);
   const [page, setPages] = useState<number>(0);
 
   const handlePrevPage = () => {
     page > 0 && setPages((prev) => prev - 1);
   };
 
-  const handleNeXtPage = () => {
-    formData.length - 1 > page && setPages((prev) => prev + 1);
+  const handleNextPage = () => {
+    formData && formData.length - 1 > page && setPages((prev) => prev + 1);
   };
 
   return (
     <>
-      {formData
+      {formData && formData.length > 0
         ? formData.slice(page, page + 1).map((item: InputFieldPropTypes) => {
             return (
               <Box key={item.id} mt={"10vh"} ml={"1.5vw"}>
@@ -29,7 +29,6 @@ export const FormData = ({ handleEditData }: any) => {
                   {item.name}
                 </Text>
                 <Text fontSize={"2xl"} mt={"-1vh"}>
-                  {" "}
                   {item.description}
                 </Text>
                 <Text mt={"3vh"} fontSize={"xl"} fontWeight={"bold"}>
@@ -85,7 +84,7 @@ export const FormData = ({ handleEditData }: any) => {
           Prev
         </Button>
         <Button
-          onClick={handleNeXtPage}
+          onClick={handleNextPage}
           bg={
             window.document.body.style.backgroundColor === "black"
               ? "white"
