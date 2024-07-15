@@ -1,9 +1,9 @@
 import { EDIT, FORM_SUBMIT } from "../constant/action";
 import { ActionType, InputFieldPropTypes } from "../constant/interfaces";
 
-const initialState = JSON.parse(localStorage.getItem("formData")) || [];
+const initialState: InputFieldPropTypes[] = JSON.parse(localStorage.getItem("formData") || "[]");
 
-export const reducer = (state = initialState, action: ActionType) => {
+export const reducer = (state: InputFieldPropTypes[] = initialState, action: ActionType): InputFieldPropTypes[] => {
   switch (action.type) {
     case FORM_SUBMIT: {
       const storedData = [...state, action.payload];
@@ -14,7 +14,7 @@ export const reducer = (state = initialState, action: ActionType) => {
     case EDIT: {
       console.log(action.payload.id);
       const editData = state.map((data: InputFieldPropTypes) => {
-        return data && data.id === action.payload.id ? action.payload : data;
+        return data.id === action.payload.id ? action.payload : data;
       });
       localStorage.setItem("formData", JSON.stringify(editData));
       return editData;
