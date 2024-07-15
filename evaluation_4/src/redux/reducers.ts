@@ -1,7 +1,7 @@
 import { EDIT, FORM_SUBMIT } from "../constant/action";
 import { ActionType, InputFieldPropTypes } from "../constant/interfaces";
 
-const initialState = JSON.parse(localStorage.getItem("formData")) || [{id : 0, name : "Masai School", description : "Education of new Age", location : "Bangalore, India", bio : "journey to change the aspirations into inspiration"}];
+const initialState = JSON.parse(localStorage.getItem("formData")) || [];
 
 export const reducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
